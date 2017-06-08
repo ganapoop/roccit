@@ -45,7 +45,7 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET new" do
     it "returns http success" do
-      get :new, topic_id: my_topic.id
+      get :new, params: topic_id: my_topic.id
 
       expect(response).to have_http_status(:success)
     end
@@ -90,7 +90,7 @@ RSpec.describe PostsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
     it "renders the #edit view" do
-      get :edit, topic_id: my_topic.id, id: my_post.id
+      get :edit, params: { { topic_id: my_topic.id, id: my_post.id }}
       expect(response).to render_template :edit
     end
     it "assigns post to be updated to @post" do
