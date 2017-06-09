@@ -17,6 +17,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'pry'
   gem 'shoulda'
+  gem 'faker'
 end
 
 # Use SCSS for stylesheets

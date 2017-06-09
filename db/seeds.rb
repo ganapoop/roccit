@@ -2,7 +2,7 @@ require 'random_data'
 # Create Topics
  15.times do
    Topic.create!(
-     name:         RandomData.random_sentence,
+     name:         Faker::Hipster.sentence,
      description:  RandomData.random_paragraph
    )
  end
@@ -14,7 +14,7 @@ require 'random_data'
 
   Post.create!(
     topic: topics.sample,
-    title: RandomData.random_sentence,
+    title: Faker::Hipster.sentence,
     body:  RandomData.random_paragraph
   )
 end
