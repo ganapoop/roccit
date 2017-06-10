@@ -1,6 +1,8 @@
+require 'bcrypt'
 class User < ActiveRecord::Base
+  include BCrypt
   before_save { self.email = email.downcase if email.present? }
-  validates :name, :length { minimum: 1, maximum: 100 }, presence: true
+  validates :name, presence: true length: { minimum: 1, maximum: 100 },
   validates :password, presence: true, length: { minimum: 6 }, if: "password_digest.nil?"
   validates :password, length: { minimum: 6 }, allow_blank: true
   validates :email,
