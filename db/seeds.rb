@@ -1,59 +1,67 @@
 #Create Users
 
-  5.times do
-    user = User.create!(
-      name:     RandomData.random_name,
-      email:    Faker::Internet.email,
-      password: RandomData.random_sentence
-    )
-  end
-  users = User.all
+5.times do
+  user = User.create!(
+  name:     RandomData.random_name,
+  email:    Faker::Internet.email,
+  password: RandomData.random_sentence
+  )
+end
+users = User.all
 # Create topics
-  15.times do
-    Topic.create!(
-      name:         Faker::Hipster.sentence,
-      description:  RandomData.random_paragraph
-    )
-  end
-  topics = Topic.all
+15.times do
+  Topic.create!(
+  name:         Faker::Hipster.sentence,
+  description:  RandomData.random_paragraph
+  )
+end
+topics = Topic.all
 
 
 # Create posts
-  50.times do
+50.times do
 
-    Post.create!(
-      user:  users.sample,
-      topic: topics.sample,
-      title: RandomData.random_sentence,
-      body:  RandomData.random_paragraph
-    )
-  end
-  posts = Post.all
+  Post.create!(
+  user:  users.sample,
+  topic: topics.sample,
+  title: RandomData.random_sentence,
+  body:  RandomData.random_paragraph
+  )
+end
+posts = Post.all
 
-  #Create comments
+#Create comments
 
-  100.times do
-    Comment.create!(
+100.times do
+  Comment.create!(
 
-      post: posts.sample,
-      body:  RandomData.random_paragraph
-    )
-  end
-  #create admin user
-  # Create an admin user
- admin = User.create!(
-   name:     'Admin User',
-   email:    'admin@example.com',
-   password: 'helloworld',
-   role:     'admin'
- )
+  post: posts.sample,
+  body:  RandomData.random_paragraph
+  )
+end
 
- # Create a member
- member = User.create!(
-   name:     'Member User',
-   email:    'member@example.com',
-   password: 'helloworld'
- )
+#create admin user
+admin = User.create!(
+name:     'Admin User',
+email:    'admin@example.com',
+password: 'helloworld',
+role:     'admin'
+)
+
+# Create a member
+member = User.create!(
+name:     'Member User',
+email:    'member@example.com',
+password: 'helloworld'
+)
+# Create an moderator user
+admin = User.create!(
+name:     'Moderator User',
+email:    'mod@example.com',
+password: 'helloworld',
+role:     'moderator'
+)
+
 
 puts "Seed finished"
 puts "#{User.count} users created."

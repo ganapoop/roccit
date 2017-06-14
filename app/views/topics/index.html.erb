@@ -3,19 +3,19 @@
 <div class="row">
   <div class="col-md-8">
     <% @topics.each do |topic| %>
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-hearing">
-            <%= link_to topic.name, topic %>
-          </h4>
-          <small>
-            <%= topic.description %>
-          </small>
-        </div>
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-hearing">
+          <%= link_to topic.name, topic %>
+        </h4>
+        <small>
+          <%= topic.description %>
+        </small>
       </div>
+    </div>
     <% end %>
   </div>
-  <% if user_is_authorized_for_topics? %>
+  <% if user_is_authorized_to_create_and_delete_topics? %>
   <div class="col-md-4">
     <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
   </div>
