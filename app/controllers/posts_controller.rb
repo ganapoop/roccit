@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post.user = current_user
 
     if @post.save
-
+      @post.create_vote
       flash[:notice] = "Post was saved."
       redirect_to [@topic, @post]
     else
@@ -60,12 +60,15 @@ class PostsController < ApplicationController
   end
 
   def authorize_user
-     post = Post.find(params[:id])
-     
-     unless current_user == post.user || current_user.admin?
-       flash[:alert] = "You must be an admin to do that."
-       redirect_to [post.topic, post]
-     end
-   end
+    post = Post.find(params[:id])
 
+    unless current_user == post.user || current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to [post.topic, post]
+    end
+  end
+
+  def create_vote
+    self.user.votes.create!(value: 1)
+  end
 end
