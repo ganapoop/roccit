@@ -47,3 +47,5 @@ end
  gem 'bootstrap-sass'
 
  gem 'bcrypt'
+
+ gem 'figaro'

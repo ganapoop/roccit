@@ -29,15 +29,18 @@
     <h3>
       <%= pluralize(@post.points, 'point') %>
       <div>
-         <h3>Comments</h3>
-         <div id="comments">
-            <%= render "comments/comments", comments: @post.comments %>
-         </div>
+        <h3>Comments</h3>
+        <div id="comments">
+          <%= render "comments/comments", comments: @post.comments %>
+        </div>
         <small>
           <%= pluralize(@post.up_votes, 'up vote') %>,
           <%= pluralize(@post.down_votes, 'down vote') %>
         </small>
       </div>
     </h3>
+    <% if current_user %>
+    <%= render partial: 'favorites/favorite', locals: { post: @post } %>
+    <% end %>
   </div>
 </div>
