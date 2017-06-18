@@ -18,6 +18,7 @@ group :development, :test do
   gem 'pry'
   gem 'shoulda'
   gem 'faker'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 # Use SCSS for stylesheets

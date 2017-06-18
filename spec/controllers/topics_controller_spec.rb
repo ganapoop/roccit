@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TopicsController, type: :controller do
-  let (:my_topic) { Topic.create!(name: RandomData.random_sentence, description:
-  RandomData.random_paragraph) }
-
+  let(:my_topic) { create(:topic) }
   describe "GET index" do
     it "returns http success" do
       get :index
@@ -43,8 +41,8 @@ RSpec.describe TopicsController, type: :controller do
 
   describe "GET new" do
     it "returns https success" do
-    get :new
-    expect(response).to have_http_status(:success)
+      get :new
+      expect(response).to have_http_status(:success)
     end
 
     it "renders the #new view" do
@@ -59,50 +57,50 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe "POST create" do
-     it "increases the number of topics by 1" do
-       expect{ post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}}.to change(Topic,:count).by(1)
-     end
+    it "increases the number of topics by 1" do
+      expect{ post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}}.to change(Topic,:count).by(1)
+    end
 
-     it "assigns Topic.last to @topic" do
-       post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}
-       expect(assigns(:topic)).to eq Topic.last
-     end
+    it "assigns Topic.last to @topic" do
+      post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}
+      expect(assigns(:topic)).to eq Topic.last
+    end
 
-     it "redirects to the new topic" do
-       post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}
-       expect(response).to redirect_to Topic.last
-     end
-   end
+    it "redirects to the new topic" do
+      post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}
+      expect(response).to redirect_to Topic.last
+    end
+  end
 
-   describe "GET edit" do
-     let(:params) { { id: my_topic.id } }
+  describe "GET edit" do
+    let(:params) { { id: my_topic.id } }
 
-     def do_request
-       get :edit, params: params
-     end
+    def do_request
+      get :edit, params: params
+    end
 
-     it "returns http success" do
+    it "returns http success" do
 
-       expect(response).to have_http_status(:success)
-     end
+      expect(response).to have_http_status(:success)
+    end
 
-     it "renders the #edit view" do
-       do_request
-       expect(response).to render_template :edit
-     end
+    it "renders the #edit view" do
+      do_request
+      expect(response).to render_template :edit
+    end
 
-     it "assigns topic to be updated @topic" do
-       do_request
-       topic_instance = assigns(:topic)
+    it "assigns topic to be updated @topic" do
+      do_request
+      topic_instance = assigns(:topic)
 
-       expect(topic_instance.id).to eq my_topic.id
-       expect(topic_instance.name).to eq my_topic.name
-       expect(topic_instance.description).to eq my_topic.description
-     end
-   end
+      expect(topic_instance.id).to eq my_topic.id
+      expect(topic_instance.name).to eq my_topic.name
+      expect(topic_instance.description).to eq my_topic.description
+    end
+  end
 
 
-   describe "PUT update" do
+  describe "PUT update" do
 
     it "updates topic with expected attributes" do
       new_name = RandomData.random_sentence
