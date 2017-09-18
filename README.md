@@ -1,8 +1,8 @@
-## Bloccit: a Reddit replica to teach the fundamentals
+## Roccit: a Reddit replica to teach the fundamentals
 
-I built Bloccit as my first Rails app at Bloc in the Backend phase of my course.
+I built Roccit as my first Rails app at Bloc in the Backend phase of my course.
 
-## Bloccit's features include the ability to:
+## Roccit's features include the ability to:
 
 * create a user account with a username, email, and password, and use a Gravatar for a profile picture
 * create topics, posts, and comments
